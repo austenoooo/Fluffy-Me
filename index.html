@@ -2,12 +2,19 @@
 <html lang="en">
   <head>
 
-    
+    <!-- Require the peer dependencies of pose-detection. -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+
+    <!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+
     <!--  Load p5.js library    -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
     
-    <title>Mirror</title>
+    <title>Fluffy Me</title>
     <!-- stylesheet -->
     <link rel="stylesheet" href="style.css" />
     
@@ -24,4 +31,5 @@
 
   <!-- javascript file -->
   <script src="script.js"></script>
+  <script src="detector.js"></script>
 </html>
