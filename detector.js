@@ -4,6 +4,9 @@ const video = document.getElementById("webcam");
 // detector
 var detector = undefined;
 
+// the detected body pose
+let pose = undefined;
+
 loadModel();
 
 function loadModel() {
@@ -65,8 +68,8 @@ async function renderResult() {
   if (detector) {
 
     try{
-      const poses = await detector.estimatePoses(video, {enableSmoothing: true});
-      console.log(poses)
+      pose = await detector.estimatePoses(video, {enableSmoothing: true, flipHorizontal: false});
+      // console.log(pose);
     }
     catch (error) {
       detector.dispose();
