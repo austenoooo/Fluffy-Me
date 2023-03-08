@@ -33,7 +33,7 @@ function init() {
 
   uniforms = {
 
-    amplitude: { value: 50.0 },
+    amplitude: { value: 1.0 },
     opacity: { value: 0.3},
     color: { value: new THREE.Color( 0xffffff ) }
 
