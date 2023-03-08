@@ -35,14 +35,14 @@ function init() {
     1000
   );
 
-  controls = new OrbitControls(camera, renderer.domElement);
+  // controls = new OrbitControls(camera, renderer.domElement);
 
-  // camera.position.set(videoWidth/2, videoHeight/2, -500);
-  // camera.lookAt(videoWidth/2, videoHeight/2, 2000);
+  camera.position.set(videoWidth/2, videoHeight/2, -500);
+  camera.lookAt(videoWidth/2, videoHeight/2, 2000);
   // controls.update();
 
-  camera.position.set(100, 100, 100);
-  camera.lookAt(0, 0, 0);
+  // camera.position.set(100, 100, 100);
+  // camera.lookAt(0, 0, 0);
 
   // helper functions
   const axesHelper = new THREE.AxesHelper(30);
@@ -74,9 +74,7 @@ function loadHeadStone() {
     "models/headStone.glb",
     function (gltf) {
       headStone = gltf.scene;
-      scene.add(headStone);
-      headStone.position.set(0, 0, 0);
-      // headStone.scale.set(0.1, 0.1, 0.1);
+      headStone.scale.set(10, 10, 10);
     },
     undefined,
     function (e) {
@@ -106,9 +104,11 @@ function addHead() {
     );
     let r = nosePos.distanceTo(leftShoulderPos) * 0.4; // the radius can be used for rescaling the models
 
-    let head = undefined;
-
-    objects.push(head);
+    scene.add(headStone);
+    headStone.position.set(nosePos.x, nosePos.y, nosePos.z);
+    headStone.scale.set(r/10, r/10, r/10);
+    
+    objects.push(headStone);
   }
   // in case if the left shoulder wasn't detected
   else if (nose.score > 0.5 && rightShoulder.score > 0.5) {
@@ -132,7 +132,7 @@ function loop() {
     }
 
     // add all the objects
-    // addHead();
+    addHead();
   }
 
   window.requestAnimationFrame(loop);
